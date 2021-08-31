@@ -1,0 +1,51 @@
+#include <stdio.h>
+#include <stdlib.h>
+struct node
+{
+    int data;
+    struct node *previous;
+    struct node *next;
+};
+struct node *head;
+
+void create()
+{
+    struct node *newnode, *temp;
+    newnode = (struct node *)malloc(sizeof(struct node));
+    printf("enter the data: ");
+    scanf("%d", &newnode->data);
+    newnode->next = 0;
+    newnode->previous = 0;
+    if (head == 0)
+    {
+        head = temp = newnode;
+    }
+    else
+    {
+        temp->next = newnode;
+        newnode->previous = temp;
+        temp = temp->next;
+    }
+}
+void display()
+{
+    struct node *temp;
+    temp = head;
+    printf("\nthe doubly linklist is: ");
+    while (temp != 0)
+    {
+        printf("%d, ", temp->data);
+        temp = temp->next;
+    }
+}
+int main()
+{
+    int num;
+    printf("how many number you want to enter in Dll: ");
+    scanf("%d", &num);
+    for (size_t i = 0; i < num; i++)
+    {
+        create();
+    }
+    display();
+}
